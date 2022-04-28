@@ -11,6 +11,8 @@ classifiers = [
 description = "A Python library for Longbridge Open API"
 include = ["longbridge/**/*"]
 license = "MIT"
+readme = "README.md"
+repository = "https://github.com/longbridgeapp/openapi-python"
 name = "longbridge"
 version = "0.1.0"
 

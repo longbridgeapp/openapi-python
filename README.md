@@ -1,7 +1,7 @@
 # Welcome to longbridge's documentation!
 
 [![Supported Versions](https://img.shields.io/pypi/pyversions/longbridge.svg)](https://pypi.org/project/longbridge)
-[![Read the Docs](https://readthedocs.org/projects/longbridge/badge/?version=latest)](https://longbridge.readthedocs.io/zh_CN/latest)
+[![Read the Docs](https://readthedocs.org/projects/longbridge/badge/?version=latest)](https://longbridge.readthedocs.io/en/latest)
 
 Longbridge OpenSDK 提供了 Http/Ws Clients，方便地使用 Longbridge OpenAPI。
 
@@ -55,4 +55,4 @@ Longbridge OpenSDK 基于 Rust 提供标准实现，通过 FFI 提供给 Python 
 -   Linux arm64
 -   Mac x86_64 & arm64
 
-如有其他需求，请联系 jifeng.yin # longbridge.sg
+如有其他需求，请提 issue.
