@@ -15,7 +15,7 @@ Longbridge OpenSDK 提供了 Http/Ws Clients，方便地使用 Longbridge OpenAP
 
 4. Happy Coding:
 
-```
+```python
 from longbridge.http import Auth, Config, HttpClient
 from longbridge.ws import ReadyState, WsCallback, WsClient
 from quote_pb2 import Command, SubscribeRequest, SubType
