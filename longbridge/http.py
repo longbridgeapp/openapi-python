@@ -49,7 +49,7 @@ class Config:
     :param headers: 所有请求携带的额外请求 Header
     """
 
-    base_url: str = "https://api.lbkrs.com"
+    base_url: str = "https://openapi.lbkrs.com"
     env: engine_uniffi.Env = engine_uniffi.Env.PROD
     headers: dict = field(default_factory=dict)
     language: str = "zh-CN"

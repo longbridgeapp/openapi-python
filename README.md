@@ -64,11 +64,11 @@ class MyWsCallback(WsCallback):
         print(f"received state change: {state}")
 
 
-ws = WsClient("wss://openapi-quote.longbridge.xyz", http, MyWsCallback())
+ws = WsClient("wss://openapi-quote.lbkrs.com", http, MyWsCallback())
 
 # [订阅行情数据](https://open.longbridgeapp.com/docs/quote/subscribe/subscribe)
 req = SubscribeRequest(
-    symbol=["00700.HK"], sub_type=[SubType.QUOTE], is_first_push=True
+    symbol=["700.HK"], sub_type=[SubType.QUOTE], is_first_push=True
 )
 result = ws.send_request(Command.Subscribe, req.SerializeToString())
 resp = SubscriptionResponse()
