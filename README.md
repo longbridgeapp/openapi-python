@@ -1,19 +1,37 @@
 # Longbridge OpenAPI SDK for Python
 
-[![Supported Versions](https://img.shields.io/pypi/pyversions/longbridge.svg)](https://pypi.org/project/longbridge)
+[![PyPI Versions](https://img.shields.io/pypi/pyversions/longbridge.svg)](https://pypi.org/project/longbridge)
 [![Read the Docs](https://readthedocs.org/projects/longbridge/badge/?version=latest)](https://longbridge.readthedocs.io/en/latest)
 
-SDK 提供了 HTTP / WebSocket Clients，方便地使用 [Longbridge OpenAPI](https://open.longbridgeapp.com/)。
+SDK 提供了 HTTP / WebSocket Clients，方便地使用 [Longbridge OpenAPI](https://open.longbridgeapp.com)。
 
-### 示例
+Longbridge OpenAPI SDK 基于 Rust 提供标准实现，通过 FFI 提供给 Python 使用。
 
-1. 从 https://github.com/longbridgeapp/openapi-protobufs 下载 quote.proto 文件
+目前，我们支持如下系统架构：
 
-2. 编译 quote.proto： `protoc --python_out=. quote.proto`
+- Linux x86_64
+- Linux arm64
+- macOS x86_64 & arm64
+- Windows x86
+- Windows x86_64
 
-3. 项目安装依赖：`pip install longbridge protobuf`
+## Installation
 
-4. Happy Coding:
+```bash
+$ pip install longbridge protobuf
+```
+
+## Get started
+
+从 https://github.com/longbridgeapp/openapi-protobufs 下载 `quote.proto` 文件。
+
+编译 quote.proto：
+
+```bash
+$ protoc --python_out=. quote.proto
+```
+
+## Usage
 
 ```py
 from longbridge.http import Auth, Config, HttpClient
@@ -38,21 +56,9 @@ ws = WsClient("wss://openapi-quote.lbkrs.com", MyWsCallback())
 resp = ws.send_request(
     Command.Subscribe,
     SubscribeRequest(
-        symbol=["00700.HK"], sub_type=[SubType.QUOTE, SubType.DEPTH], is_first_push=True
+        symbol=["700.HK"], sub_type=[SubType.QUOTE, SubType.DEPTH], is_first_push=True
     ),
 )
 ```
-
-### We Love Rust
-
-Longbridge OpenAPI SDK 基于 Rust 提供标准实现，通过 FFI 提供给 Python 使用。
-
-目前，我们支持如下系统架构：
-
-- Linux x86_64
-- Linux arm64
-- macOS x86_64 & arm64
-- Windows x86
-- Windows x86_64
 
 如有其他需求，请提 issue.
