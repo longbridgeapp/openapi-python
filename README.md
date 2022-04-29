@@ -50,7 +50,22 @@ http = HttpClient(auth, config)
 response = http.get("/v1/trade/asset/account")
 print(f"receive response: {response.body}({response.headers})")
 
+# ----- websocket -----
+class MyWsCallback(WsCallback):
+    def on_push(self, command: int, body: bytes):
+        if command == Command.PushQuoteData:
+            quote = PushQuote()
+            quote.ParseFromString(body)
+            print(f"received quote push: {quote}")
+        else:
+            print(f"received unknown push: {command}")
+
+    def on_state(self, state: ReadyState):
+        print(f"received state change: {state}")
+
+
 ws = WsClient("wss://openapi-quote.longbridge.xyz", http, MyWsCallback())
+
 # [订阅行情数据](https://open.longbridgeapp.com/docs/quote/subscribe/subscribe)
 req = SubscribeRequest(
     symbol=["00700.HK"], sub_type=[SubType.QUOTE], is_first_push=True
