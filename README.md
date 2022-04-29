@@ -9,11 +9,9 @@ Longbridge OpenAPI SDK 基于 Rust 提供标准实现，通过 FFI 提供给 Pyt
 
 目前，我们支持如下系统架构：
 
-- Linux x86_64
-- Linux arm64
-- macOS x86_64 & arm64
-- Windows x86
-- Windows x86_64
+-  Linux x86_64 & aarch64
+-  Mac x86_64 & aarch64
+-  Windows x86_64 & i686
 
 ## Installation
 
@@ -36,29 +34,31 @@ $ protoc --python_out=. quote.proto
 ```py
 from longbridge.http import Auth, Config, HttpClient
 from longbridge.ws import ReadyState, WsCallback, WsClient
-from quote_pb2 import Command, SubscribeRequest, SubType
+from quote_pb2 import (
+    Command,
+    PushQuote,
+    SubscribeRequest,
+    SubscriptionResponse,
+    SubType,
+)
 
 auth = Auth("{app_key}", "{app_secret}", access_token=None)
 config = Config(base_url="https://openapi.lbkrs.com")
 http = HttpClient(auth, config)
-response = http.get("/v1/test")
 
+# [获取账户资金](https://open.longbridgeapp.com/docs/trade/asset/account)
+response = http.get("/v1/trade/asset/account")
+print(f"receive response: {response.body}({response.headers})")
 
-class MyWsCallback(WsCallback):
-    def on_push(self, command: int, body: bytes):
-        print(f"received push message: {command} {body}")
-
-    def on_state(self, state: ReadyState):
-        print(f"received state change: {state}")
-
-
-ws = WsClient("wss://openapi-quote.lbkrs.com", MyWsCallback())
-resp = ws.send_request(
-    Command.Subscribe,
-    SubscribeRequest(
-        symbol=["700.HK"], sub_type=[SubType.QUOTE, SubType.DEPTH], is_first_push=True
-    ),
+ws = WsClient("wss://openapi-quote.longbridge.xyz", http, MyWsCallback())
+# [订阅行情数据](https://open.longbridgeapp.com/docs/quote/subscribe/subscribe)
+req = SubscribeRequest(
+    symbol=["00700.HK"], sub_type=[SubType.QUOTE], is_first_push=True
 )
+result = ws.send_request(Command.Subscribe, req.SerializeToString())
+resp = SubscriptionResponse()
+resp.ParseFromString(result)
+print(f"subscribe successfully: {resp.sub_list}")
 ```
 
 如有其他需求，请提 issue.

@@ -36,14 +36,14 @@ class RustBuffer(ctypes.Structure):
 
     @staticmethod
     def alloc(size):
-        return rust_call(_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_alloc, size)
+        return rust_call(_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_alloc, size)
 
     @staticmethod
     def reserve(rbuf, additional):
-        return rust_call(_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_reserve, rbuf, additional)
+        return rust_call(_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_reserve, rbuf, additional)
 
     def free(self):
-        return rust_call(_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_free, self)
+        return rust_call(_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_free, self)
 
     def __str__(self):
         return "RustBuffer(capacity={}, len={}, data={})".format(
@@ -342,148 +342,148 @@ def loadIndirect():
 # This is an implementation detail which will be called internally by the public API.
 
 _UniFFILib = loadIndirect()
-_UniFFILib.ffi_engine_uniffi_d1e9_HttpClient_object_free.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_HttpClient_object_free.argtypes = (
     ctypes.c_void_p,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_HttpClient_object_free.restype = None
-_UniFFILib.engine_uniffi_d1e9_HttpClient_new.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_HttpClient_object_free.restype = None
+_UniFFILib.engine_uniffi_90fc_HttpClient_new.argtypes = (
     RustBuffer,
     ctypes.c_uint64,
     ctypes.c_uint64,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_HttpClient_new.restype = ctypes.c_void_p
-_UniFFILib.engine_uniffi_d1e9_HttpClient_set_header.argtypes = (
+_UniFFILib.engine_uniffi_90fc_HttpClient_new.restype = ctypes.c_void_p
+_UniFFILib.engine_uniffi_90fc_HttpClient_set_header.argtypes = (
     ctypes.c_void_p,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_HttpClient_set_header.restype = None
-_UniFFILib.engine_uniffi_d1e9_HttpClient_set_language.argtypes = (
+_UniFFILib.engine_uniffi_90fc_HttpClient_set_header.restype = None
+_UniFFILib.engine_uniffi_90fc_HttpClient_set_language.argtypes = (
     ctypes.c_void_p,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_HttpClient_set_language.restype = None
-_UniFFILib.engine_uniffi_d1e9_HttpClient_set_url.argtypes = (
+_UniFFILib.engine_uniffi_90fc_HttpClient_set_language.restype = None
+_UniFFILib.engine_uniffi_90fc_HttpClient_set_url.argtypes = (
     ctypes.c_void_p,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_HttpClient_set_url.restype = None
-_UniFFILib.engine_uniffi_d1e9_HttpClient_get.argtypes = (
-    ctypes.c_void_p,
-    RustBuffer,
-    RustBuffer,
-    RustBuffer,
-    ctypes.POINTER(RustCallStatus),
-)
-_UniFFILib.engine_uniffi_d1e9_HttpClient_get.restype = RustBuffer
-_UniFFILib.engine_uniffi_d1e9_HttpClient_post.argtypes = (
+_UniFFILib.engine_uniffi_90fc_HttpClient_set_url.restype = None
+_UniFFILib.engine_uniffi_90fc_HttpClient_get.argtypes = (
     ctypes.c_void_p,
     RustBuffer,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_HttpClient_post.restype = RustBuffer
-_UniFFILib.engine_uniffi_d1e9_HttpClient_put.argtypes = (
+_UniFFILib.engine_uniffi_90fc_HttpClient_get.restype = RustBuffer
+_UniFFILib.engine_uniffi_90fc_HttpClient_post.argtypes = (
     ctypes.c_void_p,
     RustBuffer,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_HttpClient_put.restype = RustBuffer
-_UniFFILib.engine_uniffi_d1e9_HttpClient_delete.argtypes = (
+_UniFFILib.engine_uniffi_90fc_HttpClient_post.restype = RustBuffer
+_UniFFILib.engine_uniffi_90fc_HttpClient_put.argtypes = (
     ctypes.c_void_p,
     RustBuffer,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_HttpClient_delete.restype = RustBuffer
-_UniFFILib.ffi_engine_uniffi_d1e9_WsClient_object_free.argtypes = (
+_UniFFILib.engine_uniffi_90fc_HttpClient_put.restype = RustBuffer
+_UniFFILib.engine_uniffi_90fc_HttpClient_delete.argtypes = (
+    ctypes.c_void_p,
+    RustBuffer,
+    RustBuffer,
+    RustBuffer,
+    ctypes.POINTER(RustCallStatus),
+)
+_UniFFILib.engine_uniffi_90fc_HttpClient_delete.restype = RustBuffer
+_UniFFILib.ffi_engine_uniffi_90fc_WsClient_object_free.argtypes = (
     ctypes.c_void_p,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_WsClient_object_free.restype = None
-_UniFFILib.engine_uniffi_d1e9_WsClient_new.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_WsClient_object_free.restype = None
+_UniFFILib.engine_uniffi_90fc_WsClient_new.argtypes = (
     RustBuffer,
     ctypes.c_void_p,
     ctypes.c_uint64,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_WsClient_new.restype = ctypes.c_void_p
-_UniFFILib.engine_uniffi_d1e9_WsClient_ready_state.argtypes = (
+_UniFFILib.engine_uniffi_90fc_WsClient_new.restype = ctypes.c_void_p
+_UniFFILib.engine_uniffi_90fc_WsClient_ready_state.argtypes = (
     ctypes.c_void_p,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_WsClient_ready_state.restype = RustBuffer
-_UniFFILib.engine_uniffi_d1e9_WsClient_reconnect.argtypes = (
+_UniFFILib.engine_uniffi_90fc_WsClient_ready_state.restype = RustBuffer
+_UniFFILib.engine_uniffi_90fc_WsClient_reconnect.argtypes = (
     ctypes.c_void_p,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_WsClient_reconnect.restype = None
-_UniFFILib.engine_uniffi_d1e9_WsClient_close.argtypes = (
+_UniFFILib.engine_uniffi_90fc_WsClient_reconnect.restype = None
+_UniFFILib.engine_uniffi_90fc_WsClient_close.argtypes = (
     ctypes.c_void_p,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_WsClient_close.restype = None
-_UniFFILib.engine_uniffi_d1e9_WsClient_send_request.argtypes = (
+_UniFFILib.engine_uniffi_90fc_WsClient_close.restype = None
+_UniFFILib.engine_uniffi_90fc_WsClient_send_request.argtypes = (
     ctypes.c_void_p,
     ctypes.c_int32,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_WsClient_send_request.restype = RustBuffer
-_UniFFILib.ffi_engine_uniffi_d1e9_Binding_init_callback.argtypes = (
+_UniFFILib.engine_uniffi_90fc_WsClient_send_request.restype = RustBuffer
+_UniFFILib.ffi_engine_uniffi_90fc_Binding_init_callback.argtypes = (
     FOREIGN_CALLBACK_T,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_Binding_init_callback.restype = None
-_UniFFILib.ffi_engine_uniffi_d1e9_Session_init_callback.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_Binding_init_callback.restype = None
+_UniFFILib.ffi_engine_uniffi_90fc_Session_init_callback.argtypes = (
     FOREIGN_CALLBACK_T,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_Session_init_callback.restype = None
-_UniFFILib.ffi_engine_uniffi_d1e9_WsCallback_init_callback.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_Session_init_callback.restype = None
+_UniFFILib.ffi_engine_uniffi_90fc_WsCallback_init_callback.argtypes = (
     FOREIGN_CALLBACK_T,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_WsCallback_init_callback.restype = None
-_UniFFILib.engine_uniffi_d1e9_init_engine.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_WsCallback_init_callback.restype = None
+_UniFFILib.engine_uniffi_90fc_init_engine.argtypes = (
     RustBuffer,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.engine_uniffi_d1e9_init_engine.restype = None
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_alloc.argtypes = (
+_UniFFILib.engine_uniffi_90fc_init_engine.restype = None
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_alloc.argtypes = (
     ctypes.c_int32,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_alloc.restype = RustBuffer
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_from_bytes.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_alloc.restype = RustBuffer
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_from_bytes.argtypes = (
     ForeignBytes,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_from_bytes.restype = RustBuffer
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_free.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_from_bytes.restype = RustBuffer
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_free.argtypes = (
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_free.restype = None
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_reserve.argtypes = (
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_free.restype = None
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_reserve.argtypes = (
     RustBuffer,
     ctypes.c_int32,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_engine_uniffi_d1e9_rustbuffer_reserve.restype = RustBuffer
+_UniFFILib.ffi_engine_uniffi_90fc_rustbuffer_reserve.restype = RustBuffer
 
 # Public interface members begin here.
 
@@ -676,7 +676,7 @@ def init_engine(app,device = None,platform = None):
     app = app
     device = (None if device is None else device)
     platform = (None if platform is None else platform)
-    rust_call(_UniFFILib.engine_uniffi_d1e9_init_engine,
+    rust_call(_UniFFILib.engine_uniffi_90fc_init_engine,
         FfiConverterTypeAppInfo.lower(app),
         FfiConverterOptionalTypeDeviceInfo.lower(device),
         FfiConverterOptionalTypePlatformInfo.lower(platform))
@@ -688,7 +688,7 @@ class HttpClient(object):
         config = config
         binding = binding
         session = session
-        self._pointer = rust_call(_UniFFILib.engine_uniffi_d1e9_HttpClient_new,
+        self._pointer = rust_call(_UniFFILib.engine_uniffi_90fc_HttpClient_new,
         FfiConverterTypeHttpClientConfig.lower(config),
         FfiConverterCallbackInterfaceBinding.lower(binding),
         FfiConverterCallbackInterfaceSession.lower(session))
@@ -697,7 +697,7 @@ class HttpClient(object):
         # In case of partial initialization of instances.
         pointer = getattr(self, "_pointer", None)
         if pointer is not None:
-            rust_call(_UniFFILib.ffi_engine_uniffi_d1e9_HttpClient_object_free, pointer)
+            rust_call(_UniFFILib.ffi_engine_uniffi_90fc_HttpClient_object_free, pointer)
 
     # Used by alternative constructors or any methods which return this type.
     @classmethod
@@ -713,19 +713,19 @@ class HttpClient(object):
     def set_header(self, key,value):
         key = key
         value = value
-        rust_call(_UniFFILib.engine_uniffi_d1e9_HttpClient_set_header,self._pointer,
+        rust_call(_UniFFILib.engine_uniffi_90fc_HttpClient_set_header,self._pointer,
         FfiConverterString.lower(key),
         FfiConverterString.lower(value))
     
     def set_language(self, language):
         language = language
-        rust_call(_UniFFILib.engine_uniffi_d1e9_HttpClient_set_language,self._pointer,
+        rust_call(_UniFFILib.engine_uniffi_90fc_HttpClient_set_language,self._pointer,
         FfiConverterString.lower(language))
     
     def set_url(self, base_url,env = None):
         base_url = base_url
         env = (None if env is None else env)
-        rust_call(_UniFFILib.engine_uniffi_d1e9_HttpClient_set_url,self._pointer,
+        rust_call(_UniFFILib.engine_uniffi_90fc_HttpClient_set_url,self._pointer,
         FfiConverterString.lower(base_url),
         FfiConverterOptionalTypeEnv.lower(env))
     
@@ -735,7 +735,7 @@ class HttpClient(object):
         options = (None if options is None else options)
         return FfiConverterTypeApiResponse.lift(
             rust_call_with_error(
-    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_d1e9_HttpClient_get,self._pointer,
+    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_90fc_HttpClient_get,self._pointer,
         FfiConverterString.lower(path),
         FfiConverterOptionalTypeJson.lower(query),
         FfiConverterOptionalTypeRequestOption.lower(options))
@@ -746,7 +746,7 @@ class HttpClient(object):
         options = (None if options is None else options)
         return FfiConverterTypeApiResponse.lift(
             rust_call_with_error(
-    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_d1e9_HttpClient_post,self._pointer,
+    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_90fc_HttpClient_post,self._pointer,
         FfiConverterString.lower(path),
         FfiConverterOptionalTypeJson.lower(payload),
         FfiConverterOptionalTypeRequestOption.lower(options))
@@ -757,7 +757,7 @@ class HttpClient(object):
         options = (None if options is None else options)
         return FfiConverterTypeApiResponse.lift(
             rust_call_with_error(
-    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_d1e9_HttpClient_put,self._pointer,
+    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_90fc_HttpClient_put,self._pointer,
         FfiConverterString.lower(path),
         FfiConverterOptionalTypeJson.lower(payload),
         FfiConverterOptionalTypeRequestOption.lower(options))
@@ -768,7 +768,7 @@ class HttpClient(object):
         options = (None if options is None else options)
         return FfiConverterTypeApiResponse.lift(
             rust_call_with_error(
-    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_d1e9_HttpClient_delete,self._pointer,
+    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_90fc_HttpClient_delete,self._pointer,
         FfiConverterString.lower(path),
         FfiConverterOptionalTypeJson.lower(query),
         FfiConverterOptionalTypeRequestOption.lower(options))
@@ -804,7 +804,7 @@ class WsClient(object):
         url = url
         http = http
         callback = callback
-        self._pointer = rust_call(_UniFFILib.engine_uniffi_d1e9_WsClient_new,
+        self._pointer = rust_call(_UniFFILib.engine_uniffi_90fc_WsClient_new,
         FfiConverterString.lower(url),
         FfiConverterTypeHttpClient.lower(http),
         FfiConverterCallbackInterfaceWsCallback.lower(callback))
@@ -813,7 +813,7 @@ class WsClient(object):
         # In case of partial initialization of instances.
         pointer = getattr(self, "_pointer", None)
         if pointer is not None:
-            rust_call(_UniFFILib.ffi_engine_uniffi_d1e9_WsClient_object_free, pointer)
+            rust_call(_UniFFILib.ffi_engine_uniffi_90fc_WsClient_object_free, pointer)
 
     # Used by alternative constructors or any methods which return this type.
     @classmethod
@@ -828,25 +828,25 @@ class WsClient(object):
 
     def ready_state(self, ):
         return FfiConverterTypeReadyState.lift(
-            rust_call(_UniFFILib.engine_uniffi_d1e9_WsClient_ready_state,self._pointer,)
+            rust_call(_UniFFILib.engine_uniffi_90fc_WsClient_ready_state,self._pointer,)
         )
     def reconnect(self, ):
         rust_call_with_error(
-    FfiConverterTypeAnyhowError,_UniFFILib.engine_uniffi_d1e9_WsClient_reconnect,self._pointer,)
+    FfiConverterTypeAnyhowError,_UniFFILib.engine_uniffi_90fc_WsClient_reconnect,self._pointer,)
     
     def close(self, ):
         rust_call_with_error(
-    FfiConverterTypeAnyhowError,_UniFFILib.engine_uniffi_d1e9_WsClient_close,self._pointer,)
+    FfiConverterTypeAnyhowError,_UniFFILib.engine_uniffi_90fc_WsClient_close,self._pointer,)
     
     def send_request(self, command,payload,timeout = None):
         command = int(command)
-        payload = list(int(x) for x in payload)
+        payload = payload
         timeout = (None if timeout is None else timeout)
-        return FfiConverterSequenceUInt8.lift(
+        return FfiConverterTypeBytes.lift(
             rust_call_with_error(
-    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_d1e9_WsClient_send_request,self._pointer,
+    FfiConverterTypeApiError,_UniFFILib.engine_uniffi_90fc_WsClient_send_request,self._pointer,
         FfiConverterInt32.lower(command),
-        FfiConverterSequenceUInt8.lower(payload),
+        FfiConverterTypeBytes.lower(payload),
         FfiConverterOptionalDuration.lower(timeout))
         )
     
@@ -1260,7 +1260,7 @@ def py_foreignCallbackCallbackInterfaceBinding(handle, method, args, buf_ptr):
 foreignCallbackCallbackInterfaceBinding = FOREIGN_CALLBACK_T(py_foreignCallbackCallbackInterfaceBinding)
 
 # The FfiConverter which transforms the Callbacks in to Handles to pass to Rust.
-rust_call(lambda err: _UniFFILib.ffi_engine_uniffi_d1e9_Binding_init_callback(foreignCallbackCallbackInterfaceBinding, err))
+rust_call(lambda err: _UniFFILib.ffi_engine_uniffi_90fc_Binding_init_callback(foreignCallbackCallbackInterfaceBinding, err))
 FfiConverterCallbackInterfaceBinding = FfiConverterCallbackInterface(foreignCallbackCallbackInterfaceBinding)
 
 
@@ -1371,7 +1371,7 @@ def py_foreignCallbackCallbackInterfaceSession(handle, method, args, buf_ptr):
 foreignCallbackCallbackInterfaceSession = FOREIGN_CALLBACK_T(py_foreignCallbackCallbackInterfaceSession)
 
 # The FfiConverter which transforms the Callbacks in to Handles to pass to Rust.
-rust_call(lambda err: _UniFFILib.ffi_engine_uniffi_d1e9_Session_init_callback(foreignCallbackCallbackInterfaceSession, err))
+rust_call(lambda err: _UniFFILib.ffi_engine_uniffi_90fc_Session_init_callback(foreignCallbackCallbackInterfaceSession, err))
 FfiConverterCallbackInterfaceSession = FfiConverterCallbackInterface(foreignCallbackCallbackInterfaceSession)
 
 
@@ -1393,7 +1393,7 @@ def py_foreignCallbackCallbackInterfaceWsCallback(handle, method, args, buf_ptr)
         with args.consumeWithStream() as buf:
             rval = python_callback.on_push(
                 FfiConverterInt32.read(buf), 
-                FfiConverterSequenceUInt8.read(buf)
+                FfiConverterTypeBytes.read(buf)
                 )
         return RustBuffer.alloc(0)
         # TODO catch errors and report them back to Rust.
@@ -1447,8 +1447,29 @@ def py_foreignCallbackCallbackInterfaceWsCallback(handle, method, args, buf_ptr)
 foreignCallbackCallbackInterfaceWsCallback = FOREIGN_CALLBACK_T(py_foreignCallbackCallbackInterfaceWsCallback)
 
 # The FfiConverter which transforms the Callbacks in to Handles to pass to Rust.
-rust_call(lambda err: _UniFFILib.ffi_engine_uniffi_d1e9_WsCallback_init_callback(foreignCallbackCallbackInterfaceWsCallback, err))
+rust_call(lambda err: _UniFFILib.ffi_engine_uniffi_90fc_WsCallback_init_callback(foreignCallbackCallbackInterfaceWsCallback, err))
 FfiConverterCallbackInterfaceWsCallback = FfiConverterCallbackInterface(foreignCallbackCallbackInterfaceWsCallback)
+
+class FfiConverterTypeBytes:
+    @staticmethod
+    def write(value, buf):
+        builtin_value = list(value)
+        FfiConverterSequenceUInt8.write(builtin_value, buf)
+
+    @staticmethod
+    def read(buf):
+        builtin_value = FfiConverterSequenceUInt8.read(buf)
+        return bytes(builtin_value)
+
+    @staticmethod
+    def lift(value):
+        builtin_value = FfiConverterSequenceUInt8.lift(value)
+        return bytes(builtin_value)
+
+    @staticmethod
+    def lower(value):
+        builtin_value = list(value)
+        return FfiConverterSequenceUInt8.lower(builtin_value)
 
 class FfiConverterTypeJson:
     @staticmethod
@@ -1753,6 +1774,7 @@ class FfiConverterMapStringString(FfiConverterRustBuffer):
             FfiConverterString.read(buf): FfiConverterString.read(buf)
             for i in range(count)
         }
+# Helper code for Bytes is found in CustomType.py
 # Helper code for Json is found in CustomType.py
 # Helper code for Url is found in CustomType.py
 

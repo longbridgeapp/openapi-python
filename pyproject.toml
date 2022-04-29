@@ -14,7 +14,7 @@ license = "MIT"
 readme = "README.md"
 repository = "https://github.com/longbridgeapp/openapi-python"
 name = "longbridge"
-version = "0.1.0"
+version = "0.1.1"
 
 [tool.poetry.dependencies]
 importlib-metadata = { version = "^4", python = "<3.8" }
