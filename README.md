@@ -1,9 +1,9 @@
-# Welcome to longbridge's documentation!
+# Longbridge OpenAPI SDK for Python
 
 [![Supported Versions](https://img.shields.io/pypi/pyversions/longbridge.svg)](https://pypi.org/project/longbridge)
 [![Read the Docs](https://readthedocs.org/projects/longbridge/badge/?version=latest)](https://longbridge.readthedocs.io/en/latest)
 
-Longbridge OpenSDK 提供了 Http/Ws Clients，方便地使用 Longbridge OpenAPI。
+SDK 提供了 HTTP / WebSocket Clients，方便地使用 [Longbridge OpenAPI](https://open.longbridgeapp.com/)。
 
 ### 示例
 
@@ -15,7 +15,7 @@ Longbridge OpenSDK 提供了 Http/Ws Clients，方便地使用 Longbridge OpenAP
 
 4. Happy Coding:
 
-```python
+```py
 from longbridge.http import Auth, Config, HttpClient
 from longbridge.ws import ReadyState, WsCallback, WsClient
 from quote_pb2 import Command, SubscribeRequest, SubType
@@ -45,14 +45,14 @@ resp = ws.send_request(
 
 ### We Love Rust
 
-Longbridge OpenSDK 基于 Rust 提供标准实现，通过 FFI 提供给 Python 使用。
+Longbridge OpenAPI SDK 基于 Rust 提供标准实现，通过 FFI 提供给 Python 使用。
 
 目前，我们支持如下系统架构：
 
--   Windows x86
--   Windows x86_64
--   Linux x86_64
--   Linux arm64
--   Mac x86_64 & arm64
+- Linux x86_64
+- Linux arm64
+- macOS x86_64 & arm64
+- Windows x86
+- Windows x86_64
 
 如有其他需求，请提 issue.
