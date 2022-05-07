@@ -23,13 +23,13 @@ $ pip3 install longbridge protobuf
 
 下面我们以获取资产为例，演示一下如何使用 SDK。
 
-### 开始需求
+### 需求前提
 
-1. 在 Longbridge 开户
-2. 完成 Python3 环境安装，并安装 Pip
-3. 从 [Longbridge OpenAPI](https://open.longbridgeapp.com) 官网获取 `APP_KEY`, `APP_SECRET`, `ACCESS_TOKEN` 等信息。
+1. 在 [Longbridge](https://longbridge.hk) 开户
+2. 完成 Python 3 环境安装，并安装 Pip
+3. 从 [Longbridge OpenAPI](https://open.longbridgeapp.com) 官网获取 ` App Key`, `App Secret`, `Access Token` 等信息。
 
-### 获取 APP_KEY, APP_SECRET, ACCESS_TOKEN
+### 获取 App Key, App Secret, Access Token 等信息
 
 访问 [Longbridge OpenAPI](https://open.longbridgeapp.com) 网站，登录后，进入 “个人中心”。
 
@@ -43,10 +43,11 @@ $ export LONGBRIDGE_ACCESS_TOKEN=从页面上获取到的 Access Token
 
 ### API Host
 
-- HTTP API - https://openapi.lbkrs.com
-- WebSocket - wss://openapi-quote.longbridge.global
+- HTTP API - `https://openapi.lbkrs.com`
+- WebSocket - `wss://openapi-quote.longbridge.global`
 
-> NOTE: 为了便于演示，我们的例子里面均通过 `LONGBRIDGE_APP_KEY`、`LONGBRIDGE_APP_SECRET`、`LONGBRIDGE_ACCESS_TOKEN` 这样的环境变量来获取配置信息。如您在 Windows 环境不方便使用环境变量。可根据个人需要，修改 Python 代码。
+> NOTE: 为了便于演示，我们的例子里面均通过 `LONGBRIDGE_APP_KEY`、`LONGBRIDGE_APP_SECRET`、`LONGBRIDGE_ACCESS_TOKEN` 这样的环境变量来获取配置信息。
+> 如您在 Windows 环境不方便使用环境变量。可根据个人需要，修改 Python 代码。
 
 ### 调用 HTTP 请求
 
@@ -105,14 +106,27 @@ python3 main.py
 
 ### 订阅实时行情
 
+订阅行情数据请检查 [开发者中心](https://open.longbridgeapp.com/account) - “行情权限” 是否正确
+
+- 港股 - BMP 基础报价，无实时行情推送，无法用 WebSocket 订阅
+- 美股 - LV1 纳斯达克最优报价 (只限 Open API）
+
+运行前访问 [开发者中心](https://open.longbridgeapp.com/account)，检查确保账户有正确的行情权限。
+
+> NOTE: 如没有开通行情权限，可以通过 "长桥" 手机客户端，并进入 “我的 - 我的行情 - 行情商城“ 购买开通行情权限。
+> https://longbridgeapp.com/download
+
 创建一个 `subscribe_quote.py` 并写入下面的代码：
 
 ```py
+# 订阅行情数据
+# https://open.longbridgeapp.com/docs/quote/subscribe/subscribe
 import os
-import json
+import time
 from longbridge.http import Auth, Config, HttpClient
 from longbridge.ws import ReadyState, WsCallback, WsClient
-from longbridge.quote.quote_pb2 import ( Command, PushQuote, SubscribeRequest, SubscriptionResponse, SubType)
+# Protobuf 变量定义参见：https://github.com/longbridgeapp/openapi-protobufs/blob/main/quote/api.proto
+from longbridge.proto.quote_pb2 import (Command, PushQuote, SubscribeRequest, SubscriptionResponse, SubType)
 
 class MyWsCallback(WsCallback):
     def on_push(self, command: int, body: bytes):
@@ -130,15 +144,45 @@ auth = Auth(os.getenv("LONGBRIDGE_APP_KEY"), os.getenv("LONGBRIDGE_APP_SECRET"),
 http = HttpClient(auth, Config(base_url="https://openapi.lbkrs.com"))
 ws = WsClient("wss://openapi-quote.longbridge.global", http, MyWsCallback())
 
-req = SubscribeRequest(symbol=["700.HK"], sub_type=[SubType.QUOTE], is_first_push=True)
+req = SubscribeRequest(symbol=["700.HK", "AAPL.US", "TSLA.US", "NFLX.US"], sub_type=[SubType.QUOTE], is_first_push=True)
 result = ws.send_request(Command.Subscribe, req.SerializeToString())
 resp = SubscriptionResponse()
 resp.ParseFromString(result)
 
-print(json.dumps(resp.sub_list))
+print(f"Subscribed symbol: {resp.sub_list}")
+
+print("Waiting for push...\nPress [Ctrl + c] to quit.")
+while True:
+    time.sleep(10)
 ```
 
-### 做一次下单动作
+启动行情订阅：
+
+```bash
+$ python3 subscribe_quote.py
+```
+
+我们可以看到这样的结果：
+
+```
+Received state -> ReadyState.OPEN
+Subscribed symbol:
+
+[symbol: "700.HK"
+sub_type: QUOTE
+, symbol: "AAPL.US"
+sub_type: QUOTE
+, symbol: "TSLA.US"
+sub_type: QUOTE
+, symbol: "NFLX.US"
+sub_type: QUOTE
+]
+
+Waiting for push...
+Press [Ctrl + c] to quit.
+```
+
+### 委托下单
 
 下面我们做一次 [委托下单](https://open.longbridgeapp.com/docs/trade/order/submit) 动作，我们假设要以 50 HKD 买入 `700.HK` 的数量为 `100`。
 
