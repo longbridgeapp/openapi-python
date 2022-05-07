@@ -1,23 +1,24 @@
 [tool.poetry]
 authors = ["flisky <jifeng.yin@longbridge.sg>"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "Topic :: Office/Business :: Financial",
-    "Programming Language :: Rust",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Office/Business :: Financial",
+  "Programming Language :: Rust",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
 ]
 description = "A Python library for Longbridge Open API"
 include = ["longbridge/**/*"]
 license = "MIT"
+name = "longbridge"
 readme = "README.md"
 repository = "https://github.com/longbridgeapp/openapi-python"
-name = "longbridge"
 version = "0.1.1"
 
 [tool.poetry.dependencies]
-importlib-metadata = { version = "^4", python = "<3.8" }
+importlib-metadata = {version = "^4", python = "<3.8"}
+protobuf = "^3.20.1"
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
