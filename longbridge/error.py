@@ -25,7 +25,7 @@ HttpError = engine_uniffi.ApiError.Http
 HttpError.__module__ = __name__
 HttpError.__name__ = "HttpError"
 HttpError.__doc__ = """
-服务端处理失败
+HTTP 请求服务端处理失败
 
 :param int status: 响应状态码
 :param int code: 返回的错误码，由服务端定义
@@ -35,4 +35,14 @@ HttpError.__doc__ = """
 :param str trace_id: 当前请求 ID
 """
 
-__all__ = ["ApiError", "HttpError", "RequestError"]
+WsError = engine_uniffi.ApiError.WebSocket
+WsError.__module__ = __name__
+WsError.__name__ = "WsError"
+WsError.__doc__ = """
+WebSocket 请求服务端处理失败
+
+:param int code: 返回的错误码，由服务端定义
+:param str message: 错误描述
+"""
+
+__all__ = ["ApiError", "HttpError", "RequestError", "WsError"]

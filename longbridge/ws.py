@@ -32,7 +32,8 @@ class WsClient(engine_uniffi.WsClient):
         :param payload: protobuf 序列化后的请求体，请参阅 pb 文件
         :param timeout: 超时时间
         :return: 返回的 protobuf 数据，类型为 command 对应的 response type，请参阅 pb 文件
-        :raises ApiError: 通用错误，如连接不在 OPEN 状态
+        :raises WsError: 服务器响应错误
+        :raises ApiError: 通用错误，如发请求时连接不在 OPEN 状态
         :rtype: bytes
         """
         return super().send_request(command, payload, timeout)
