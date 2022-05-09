@@ -1,5 +1,5 @@
-# 订阅行情数据
-# https://open.longbridgeapp.com/docs/quote/subscribe/subscribe
+# 实时价格推送
+# https://open.longbridgeapp.com/docs/quote/push/push-quote
 import os
 import time
 from longbridge.http import Auth, Config, HttpClient
