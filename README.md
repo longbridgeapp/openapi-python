@@ -43,8 +43,8 @@ $ export LONGBRIDGE_ACCESS_TOKEN=从页面上获取到的 Access Token
 
 ### API Host
 
-- HTTP API - `https://openapi.lbkrs.com`
-- WebSocket - `wss://openapi-quote.longbridge.global`
+- HTTP API - `https://openapi.longbridgeapp.com`
+- WebSocket - `wss://openapi-quote.longbridgeapp.com`
 
 > NOTE: 为了便于演示，我们的例子里面均通过 `LONGBRIDGE_APP_KEY`、`LONGBRIDGE_APP_SECRET`、`LONGBRIDGE_ACCESS_TOKEN` 这样的环境变量来获取配置信息。
 > 如您在 Windows 环境不方便使用环境变量。可根据个人需要，修改 Python 代码。
@@ -59,7 +59,7 @@ import json
 from longbridge.http import Auth, Config, HttpClient
 
 auth = Auth(os.getenv("LONGBRIDGE_APP_KEY"), os.getenv("LONGBRIDGE_APP_SECRET"), access_token=os.getenv("LONGBRIDGE_ACCESS_TOKEN"))
-http = HttpClient(auth, Config(base_url="https://openapi.lbkrs.com"))
+http = HttpClient(auth, Config(base_url="https://openapi.longbridgeapp.com"))
 
 resp = http.get("/v1/asset/account")
 print(json.dumps(resp.data, indent=2))
@@ -142,7 +142,7 @@ class MyWsCallback(WsCallback):
 
 auth = Auth(os.getenv("LONGBRIDGE_APP_KEY"), os.getenv("LONGBRIDGE_APP_SECRET"), access_token=os.getenv("LONGBRIDGE_ACCESS_TOKEN"))
 http = HttpClient(auth, Config(base_url="https://openapi.lbkrs.com"))
-ws = WsClient("wss://openapi-quote.longbridge.global", http, MyWsCallback())
+ws = WsClient("wss://openapi-quote.longbridgeapp.com", http, MyWsCallback())
 
 req = SubscribeRequest(symbol=["700.HK", "AAPL.US", "TSLA.US", "NFLX.US"], sub_type=[SubType.QUOTE], is_first_push=True)
 result = ws.send_request(Command.Subscribe, req.SerializeToString())
@@ -196,7 +196,7 @@ import json
 from longbridge.http import Auth, Config, HttpClient
 
 auth = Auth(os.getenv("LONGBRIDGE_APP_KEY"), os.getenv("LONGBRIDGE_APP_SECRET"), access_token=os.getenv("LONGBRIDGE_ACCESS_TOKEN"))
-http = HttpClient(auth, Config(base_url="https://openapi.lbkrs.com"))
+http = HttpClient(auth, Config(base_url="https://openapi.longbridgeapp.com"))
 
 payload = {
     "side": "Buy",
@@ -239,7 +239,7 @@ import json
 from longbridge.http import Auth, Config, HttpClient
 
 auth = Auth(os.getenv("LONGBRIDGE_APP_KEY"), os.getenv("LONGBRIDGE_APP_SECRET"), access_token=os.getenv("LONGBRIDGE_ACCESS_TOKEN"))
-http = HttpClient(auth, Config(base_url="https://openapi.lbkrs.com"))
+http = HttpClient(auth, Config(base_url="https://openapi.longbridgeapp.com"))
 
 resp = http.get("/v1/trade/order/today")
 print(json.dumps(resp.data, indent=2))
